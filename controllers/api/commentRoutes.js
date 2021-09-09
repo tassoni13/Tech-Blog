@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
-const withAuth = require('../../')
+const withAuth = require('../../utils/auth')
 
 //Gets all comments ordered by user id, then by time created
 router.get('/', async (req, res) => {

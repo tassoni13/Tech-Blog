@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //Get all users
 router.get('/', async (req, res) => {
@@ -90,8 +91,13 @@ router.post('/logout', (req, res) => {
 });
 
 //Update user data
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
+
+        if (req.params.id != req.session.user_id) {
+            res.status(403).json({message: 'Not authorized to modify this account'});
+            return;
+        }
         const userData = await User.update(req.body, {
             individualHooks: true,
             where: {
@@ -109,8 +115,13 @@ router.put('/:id', async (req, res) => {
 });
 
 //Delete user
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
+
+        if (req.params.id != req.session.user_id) {
+            res.status(403).json({message: 'Not authorized to modify this account'});
+            return;
+        }
         const userData = await User.destroy({
             where: {
                 id: req.params.id
