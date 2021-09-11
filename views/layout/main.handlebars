@@ -1,1 +1,33 @@
-<!-- main html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header class="navbar">
+        <h1>TechBlog</h1>
+               <ul class="nav-list">
+           <li>
+               <button class="no-button" href="#">Home</button>
+           </li>
+           <li>
+               <button class="no-button" href="#">Dashboard</button>
+           </li>
+           <li>
+               {{#if logged_in}}
+               <button class="no-button" id="logout" href="#">Logout</button>
+               {{else}}
+               <button class="no-button" href="/login">Login</button>
+               {{/if}}
+           </li>
+       </ul>
+    </header>
+    <div class="header-space"></div>
+
+    {{{ body }}}
+
+</body>
+</html>
