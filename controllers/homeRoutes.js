@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } = require('constants');
-const { pseudoRandomBytes } = require('crypto');
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 

@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TechBlog</title>
+    <link rel="stylesheet" href="../../public/css/jass.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
     <header class="navbar">
         <h1>TechBlog</h1>
                <ul class="nav-list">
            <li>
-               <button class="no-button" href="#">Home</button>
+               <a class="link" href="/">Home</a>
            </li>
            <li>
-               <button class="no-button" href="#">Dashboard</button>
+               <a class="link" href="/dashboard">Dashboard</a>
            </li>
            <li>
                {{#if logged_in}}
-               <button class="no-button" id="logout" href="#">Logout</button>
+               <button id="logout" id="logout">Logout</button>
+               <script src ="/js/logout.js"></script>
                {{else}}
-               <button class="no-button" href="/login">Login</button>
+               <a class="link" href="/login">Login</a>
                {{/if}}
            </li>
        </ul>
