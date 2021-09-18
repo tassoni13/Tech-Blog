@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 //Gets all posts and displays them on homepage
 router.get('/', async (req, res) => {
     try {
-        const postData = await pseudoRandomBytes.findAll({
+        const postData = await Post.findAll({
             order: [['createdAt', 'DESC']],
             include: [
                 {

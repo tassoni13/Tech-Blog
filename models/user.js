@@ -17,7 +17,8 @@ User.init({
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: DataTypes.STRING,
@@ -33,7 +34,8 @@ User.init({
         return newUserData;
     },
     beforeUpdate: async (updatedUserData) => {
-        return updatedUserData;
+       updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+       return updatedUserData;
     },
 },
 sequelize,

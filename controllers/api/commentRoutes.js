@@ -47,7 +47,6 @@ router.get('/post/:post_id', async (req, res) => {
         });
         if (!commentData) {
             res.status(404).json({message: 'No comment found with this id!'});
-            return;
         }
         res.status(200).json(commentData);
     } catch (err) {
@@ -84,7 +83,7 @@ router.get('/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-})
+});
 
 //Allows logged in users to create new comment
 router.post('/', withAuth, async (req, res) => {
